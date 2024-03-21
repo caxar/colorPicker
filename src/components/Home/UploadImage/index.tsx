@@ -1,6 +1,7 @@
 import React from "react";
 
 const UploadImage = ({ uploadImage }: any) => {
+  console.log("test", uploadImage);
   return (
     <div className="upload-image w-[600px] h-full rounded-2xl flex justify-center items-center">
       {uploadImage ? (

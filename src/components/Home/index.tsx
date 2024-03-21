@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div className="flex flex-col justify-center items-center h-[100vh]">
       <div className="home">
-        <Upload />
+        <Upload setUploadImage={setUploadImage} />
         <div className="home-wrapper flex justify-center gap-10">
           <div className="home-werapper__img">
             <UploadImage uploadImage={uploadImage} />

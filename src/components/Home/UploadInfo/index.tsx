@@ -6,7 +6,10 @@ interface PropsInfo {
 }
 
 export const UploadInfo: React.FC<PropsInfo> = ({ color, openPicker }) => {
-  const handleCopyColor = () => {};
+  const handleCopyColor = async () => {
+    await navigator.clipboard.writeText(color);
+    console.log(`Скопирован: `, color);
+  };
 
   return (
     <div className="color flex flex-col justify-between h-full">
@@ -59,7 +62,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({ color, openPicker }) => {
             <div className="text-[17px] mb-2">Hex значения</div>
             <div className="info-item__value w-[240px] flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
               <span className="text-[17px] font-bold">{color}</span>
-              <button>
+              <button onClick={handleCopyColor}>
                 <svg
                   width="25px"
                   height="25px"
