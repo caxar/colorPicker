@@ -1,9 +1,19 @@
 import React from "react";
 
-export const UploadInfo = () => {
+interface PropsInfo {
+  color: string;
+  openPicker: () => void;
+}
+
+export const UploadInfo: React.FC<PropsInfo> = ({ color, openPicker }) => {
+  const handleCopyColor = () => {};
+
   return (
     <div className="color flex flex-col justify-between h-full">
-      <div className="color-picker font-bold text-[25px] flex items-center gap-5">
+      <div
+        onClick={() => openPicker()}
+        className="color-picker font-bold text-[25px] flex items-center gap-5 cursor-pointer"
+      >
         Выбрать цвет
         <svg
           width="25px"
@@ -40,13 +50,15 @@ export const UploadInfo = () => {
         </svg>
       </div>
       <div className="color-picker__wrapper flex gap-5">
-        <div className="picker-wrapper__color bg-green-500 w-[50px] rounded-full"></div>
+        <div
+          className={`picker-wrapper__color bg-[${color}] w-[50px] rounded-full`}
+        ></div>
         <div className="picker-wrapper__info flex flex-col gap-3">
           {/* 1 */}
           <div className="wrapper-info__item">
             <div className="text-[17px] mb-2">Hex значения</div>
             <div className="info-item__value w-[240px] flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
-              <span className="text-[17px] font-bold">#94D3a5</span>
+              <span className="text-[17px] font-bold">{color}</span>
               <button>
                 <svg
                   width="25px"
@@ -85,7 +97,7 @@ export const UploadInfo = () => {
             <div className="text-[17px] mb-2">RGB значения</div>
             <div className="info-item__value w-[240px] flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
               <span className="text-[17px] font-bold">rgb(146, 211, 165)</span>
-              <button>
+              <button onClick={handleCopyColor}>
                 <svg
                   width="25px"
                   height="25px"
