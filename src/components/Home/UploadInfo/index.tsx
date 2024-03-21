@@ -6,9 +6,18 @@ interface PropsInfo {
 }
 
 export const UploadInfo: React.FC<PropsInfo> = ({ color, openPicker }) => {
+  const [colorRgba, setRgba] = React.useState();
   const handleCopyColor = async () => {
     await navigator.clipboard.writeText(color);
     console.log(`Скопирован: `, color);
+  };
+
+  const hexToRGB = () => {
+    const value = parseInt(color.slice(1), 16);
+    let r = (value >> 16) & 0xff;
+    let g = (value >> 8) & 0xff;
+    let b = value & 0xff;
+    return `(${r}, ${g}, ${b})`;
   };
 
   return (
@@ -54,7 +63,8 @@ export const UploadInfo: React.FC<PropsInfo> = ({ color, openPicker }) => {
       </div>
       <div className="color-picker__wrapper flex gap-5">
         <div
-          className={`picker-wrapper__color bg-[${color}] w-[50px] rounded-full`}
+          style={{ background: color }}
+          className={`picker-wrapper__color w-[50px] rounded-full`}
         ></div>
         <div className="picker-wrapper__info flex flex-col gap-3">
           {/* 1 */}
@@ -99,7 +109,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({ color, openPicker }) => {
           <div className="wrapper-info__item">
             <div className="text-[17px] mb-2">RGB значения</div>
             <div className="info-item__value w-[240px] flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
-              <span className="text-[17px] font-bold">rgb(146, 211, 165)</span>
+              <span className="text-[17px] font-bold">rgb{hexToRGB()}</span>
               <button onClick={handleCopyColor}>
                 <svg
                   width="25px"
@@ -137,7 +147,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({ color, openPicker }) => {
           <div className="wrapper-info__item">
             <div className="text-[17px] mb-2">HSL значения</div>
             <div className="info-item__value w-[240px] flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
-              <span className="text-[17px] font-bold">hsl(136, 42, 70)</span>
+              <span className="text-[17px] font-bold">hsl{}</span>
               <button>
                 <svg
                   width="25px"
