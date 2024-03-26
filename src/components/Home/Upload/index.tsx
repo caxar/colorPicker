@@ -16,10 +16,10 @@ const Upload = ({ setUploadImage }: UploadProps) => {
     <div className="mb-4 flex">
       <button
         onClick={() => inputRef.current.click()}
-        className="bg-gradient-to-r from-gradient_one to-gradient_two rounded-2xl
+        className="bg-gradient-to-r from-[#0353a4] to-[#023e7d] rounded-2xl
       py-3 px-7 font-bold"
       >
-        Загрузка фото
+        Загрузить фото
       </button>
       <input
         onChange={(e) => handleChangeInput(e.target.files[0])}

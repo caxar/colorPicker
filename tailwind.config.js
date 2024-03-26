@@ -9,6 +9,7 @@ export default {
         black_color: "#0f0f0f",
         gradient_one: "#038183",
         gradient_two: "#0c4f50",
+        block_color: "#23282f",
       },
     },
   },
