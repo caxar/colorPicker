@@ -5,12 +5,12 @@ import { UploadInfo } from "./UploadInfo";
 import useEyeDropper from "use-eye-dropper";
 import ColorPallette from "./ColorPallette";
 import ColorThief from "colorthief";
-import DragDropFile from "./DragDropFile";
 
 const Home = () => {
   const [color, setColor] = React.useState<string>("#fff");
-  const [palletteColor, setPalletteColor] = React.useState([]);
-  const [uploadImage, setUploadImage] = React.useState<string | undefined>();
+  const [palletteColor, setPalletteColor] = React.useState<any[]>([]);
+  const [uploadImage, setUploadImage] = React.useState<HTMLImageElement>();
+  const [delButton, setDelButton] = React.useState<boolean>(false);
 
   const { open, close, isSupported } = useEyeDropper();
 
@@ -51,13 +51,13 @@ const Home = () => {
               uploadImage={uploadImage}
               setUploadImage={setUploadImage}
             />
-            {/* <DragDropFile uploadImage={uploadImage} /> */}
           </div>
           <div className="home-werapper__info">
             <UploadInfo
               color={color}
               openPicker={openPicker}
               uploadImage={uploadImage}
+              palletteColor={[]}
             />
           </div>
         </div>

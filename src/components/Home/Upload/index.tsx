@@ -5,7 +5,7 @@ interface UploadProps {
 }
 
 const Upload = ({ setUploadImage }: UploadProps) => {
-  const inputRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLDivElement>();
 
   const handleChangeInput = (image: Blob | MediaSource) => {
     setUploadImage(URL.createObjectURL(image));
@@ -15,19 +15,13 @@ const Upload = ({ setUploadImage }: UploadProps) => {
   return (
     <div className="mb-4 flex">
       <button
-        onClick={() => inputRef.current.click()}
+        onClick={() => inputRef.current && inputRef.current.click()}
         className="bg-gradient-to-r from-[#0353a4] to-[#023e7d] rounded-2xl
       py-3 px-7 font-bold"
       >
         Загрузить фото
       </button>
-      {/* <button
-        onClick={() => setUploadImage(null)}
-        className="bg-gradient-to-r bg-red-700 rounded-2xl
-      py-3 px-7 font-bold"
-      >
-        Удалить картинку
-      </button> */}
+
       <input
         onChange={(e) => handleChangeInput(e.target.files[0])}
         ref={inputRef}
