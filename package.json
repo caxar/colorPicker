@@ -10,12 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@million/lint": "^0.0.73",
+    "@mui/material": "^5.15.14",
     "@react-three/postprocessing": "^2.16.2",
+    "antd": "^5.15.4",
     "color-convert": "^2.0.1",
     "colorthief": "^2.4.0",
+    "dropzone": "^6.0.0-beta.2",
+    "framer-motion": "^11.0.22",
+    "keep-react": "^1.2.0",
     "nanoid": "^5.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-toastify": "^10.0.5",
     "use-eye-dropper": "^1.6.1"
   },

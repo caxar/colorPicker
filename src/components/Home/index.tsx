@@ -5,11 +5,12 @@ import { UploadInfo } from "./UploadInfo";
 import useEyeDropper from "use-eye-dropper";
 import ColorPallette from "./ColorPallette";
 import ColorThief from "colorthief";
+import DragDropFile from "./DragDropFile";
 
 const Home = () => {
   const [color, setColor] = React.useState<string>("#fff");
   const [palletteColor, setPalletteColor] = React.useState([]);
-  const [uploadImage, setUploadImage] = React.useState(null);
+  const [uploadImage, setUploadImage] = React.useState();
 
   const { open, close, isSupported } = useEyeDropper();
 
@@ -25,6 +26,8 @@ const Home = () => {
   React.useEffect(() => {
     openPicker();
   }, [open]);
+
+  // Палетка цветов
 
   React.useEffect(() => {
     const colorThief = new ColorThief();
@@ -44,7 +47,11 @@ const Home = () => {
         <Upload setUploadImage={setUploadImage} />
         <div className="home-wrapper flex justify-between gap-10 items-center mb-5">
           <div className="home-werapper__img">
-            <UploadImage uploadImage={uploadImage} />
+            <UploadImage
+              uploadImage={uploadImage}
+              setUploadImage={setUploadImage}
+            />
+            {/* <DragDropFile uploadImage={uploadImage} /> */}
           </div>
           <div className="home-werapper__info">
             <UploadInfo
@@ -54,7 +61,11 @@ const Home = () => {
             />
           </div>
         </div>
-        <ColorPallette palletteColor={palletteColor} />
+        {palletteColor.length > 0 ? (
+          <ColorPallette palletteColor={palletteColor} />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

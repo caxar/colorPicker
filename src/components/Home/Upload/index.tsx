@@ -5,11 +5,11 @@ interface UploadProps {
 }
 
 const Upload = ({ setUploadImage }: UploadProps) => {
-  const inputRef = React.useRef();
+  const inputRef = React.useRef<HTMLDivElement>(null);
 
-  const handleChangeInput = (image) => {
+  const handleChangeInput = (image: Blob | MediaSource) => {
     setUploadImage(URL.createObjectURL(image));
-    console.log(image);
+    // console.log(image);
   };
 
   return (

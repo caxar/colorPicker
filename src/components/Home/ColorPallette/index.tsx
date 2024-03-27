@@ -14,7 +14,7 @@ const ColorPallette = ({ palletteColor }: PropsColorPallette) => {
         Палетка цветов
       </div>
       <div className="color-pallette__wrapper grid grid-cols-8 justify-between items-center flex-wrap gap-5">
-        {palletteColor?.map((item) => {
+        {palletteColor?.map((item: any) => {
           return <PalletteItems key={nanoid()} data={item} />;
         })}
       </div>

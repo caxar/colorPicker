@@ -33,6 +33,11 @@ export const UploadInfo: React.FC<PropsInfo> = ({
     notify();
   };
 
+  const handleCopyColorRGB = async () => {
+    await navigator?.clipboard?.writeText(hexToRGB());
+    notify();
+  };
+
   const hexToRGB = () => {
     const value = parseInt(color.slice(1), 16);
     let r = (value >> 16) & 0xff;
@@ -40,6 +45,8 @@ export const UploadInfo: React.FC<PropsInfo> = ({
     let b = value & 0xff;
     return `(${r}, ${g}, ${b})`;
   };
+
+  const hexToRGBA = () => {};
 
   return (
     <div className="color flex flex-col justify-between h-full gap-5">
@@ -119,7 +126,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({
             <div className="text-[17px] mb-2">RGB значения</div>
             <div className="info-item__value w-[240px] flex justify-between items-center text-black_color bg-white_color rounded-xl py-1 px-5">
               <span className="text-[17px] font-bold">rgb{hexToRGB()}</span>
-              <button onClick={handleCopyColor}>
+              <button onClick={handleCopyColorRGB}>
                 <svg
                   width="25px"
                   height="25px"
@@ -153,10 +160,10 @@ export const UploadInfo: React.FC<PropsInfo> = ({
             </div>
           </div>
           {/* 3 */}
-          {/* <div className="wrapper-info__item">
+          <div className="wrapper-info__item">
             <div className="text-[17px] mb-2">HSL значения</div>
             <div className="info-item__value w-[240px] flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
-              <span className="text-[17px] font-bold">hsl{}</span>
+              <span className="text-[17px] font-bold">hsl{hexToRGBA()}</span>
               <button>
                 <svg
                   width="25px"
@@ -189,7 +196,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({
                 </svg>
               </button>
             </div>
-          </div> */}
+          </div>
         </div>
         <ToastContainer />
       </div>
