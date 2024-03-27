@@ -10,7 +10,7 @@ import DragDropFile from "./DragDropFile";
 const Home = () => {
   const [color, setColor] = React.useState<string>("#fff");
   const [palletteColor, setPalletteColor] = React.useState([]);
-  const [uploadImage, setUploadImage] = React.useState();
+  const [uploadImage, setUploadImage] = React.useState<string | undefined>();
 
   const { open, close, isSupported } = useEyeDropper();
 

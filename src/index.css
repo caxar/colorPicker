@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300..700&display=swap");
+
 body {
   color: #feffff;
   font-size: 16px;
   background-color: #181b20;
+  font-family: "Overpass Mono", monospace;
 }

@@ -21,6 +21,13 @@ const Upload = ({ setUploadImage }: UploadProps) => {
       >
         Загрузить фото
       </button>
+      {/* <button
+        onClick={() => setUploadImage(null)}
+        className="bg-gradient-to-r bg-red-700 rounded-2xl
+      py-3 px-7 font-bold"
+      >
+        Удалить картинку
+      </button> */}
       <input
         onChange={(e) => handleChangeInput(e.target.files[0])}
         ref={inputRef}
