@@ -1,5 +1,6 @@
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { isLight, isDark } from "color-2-name";
 
 const PalletteItems = ({ data }: any) => {
   const [copyText, setCopyText] = React.useState<boolean>(false);
@@ -15,14 +16,26 @@ const PalletteItems = ({ data }: any) => {
       })
       .join("");
 
+  const notify = () =>
+    toast.success(`Цвет ${hexColor} скопирован`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      // transition: Bounce,
+    });
+
   const copyColor = () => {
     navigator?.clipboard?.writeText(hexColor);
-
     setCopyText(true);
-    // setTimeout(() => {
-    //   setCopyText(false);
-    // }, 1300);
+    notify();
   };
+
+  const lightOrDark = isLight(hexColor);
 
   return (
     <>
@@ -33,7 +46,9 @@ const PalletteItems = ({ data }: any) => {
           className="color h-[70px] rounded-xl flex items-center justify-center gap-3 cursor-pointer
         "
         >
-          {hexColor}
+          <span className={`font-bold ${lightOrDark ? "text-black" : ""}`}>
+            {hexColor}
+          </span>
         </div>
         <span className="absolute left-[18px] bottom-[-35px] scale-0 transition-all rounded bg-block_color p-2 text-xs text-white group-hover:scale-100">
           Скопировать

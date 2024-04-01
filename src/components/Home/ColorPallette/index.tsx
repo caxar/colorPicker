@@ -7,7 +7,6 @@ interface PropsColorPallette {
 }
 
 const ColorPallette = ({ palletteColor }: PropsColorPallette) => {
-  console.log(palletteColor);
   return (
     <div className="color-pallette">
       <div className="color-pallette__title font-bold text-[25px] mb-5">

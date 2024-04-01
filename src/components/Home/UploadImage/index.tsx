@@ -13,8 +13,8 @@ const UploadImage = ({
   setUploadImage,
   setPalletteColor,
 }: UploadImageProps) => {
-  const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
-    const target = e.target as HTMLInputElement & {
+  const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
+    const target = e.target as unknown as HTMLInputElement & {
       files: FileList;
     };
     setUploadImage(URL.createObjectURL(target.files[0]));
@@ -31,7 +31,7 @@ const UploadImage = ({
   return (
     <div
       className={`upload-image  w-[700px] h-[400px] rounded-2xl flex justify-center items-center overflow-hidden border-dashed border-2 border-[#3b3b3f] 
-      cursor-pointer transition ease-in-out ${
+      cursor-pointer hover:border-[#fff] transition ease-in-out ${
         uploadImage?.length > 0 ? "border-none" : ""
       }`}
     >

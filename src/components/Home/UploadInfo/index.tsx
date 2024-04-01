@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { hexToRGB } from "../../../utils/hexToRGB";
 import { hexToHSL } from "../../../utils/hextToHSL";
+import { closest, isLight, isDark } from "color-2-name";
 
 interface PropsInfo {
   color: string;
@@ -44,6 +45,8 @@ export const UploadInfo: React.FC<PropsInfo> = ({
     await navigator?.clipboard?.writeText(hexToHSL(color));
     notify();
   };
+
+  const colorName = closest(color);
 
   return (
     <div className="color flex flex-col justify-between h-full gap-5">
@@ -192,6 +195,13 @@ export const UploadInfo: React.FC<PropsInfo> = ({
                   />
                 </svg>
               </button>
+            </div>
+          </div>
+          {/* 4 */}
+          <div className="wrapper-info__item">
+            <div className="text-[17px] mb-2">Название цвета:</div>
+            <div className="info-item__value w-[280px] gap-3 flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
+              <span className="text-[17px] font-bold">{colorName?.name}</span>
             </div>
           </div>
         </div>
