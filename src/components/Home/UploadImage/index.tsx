@@ -71,7 +71,7 @@ const UploadImage = ({
                   <span className="text-[20px] text-white_color hover:border-dotted">
                     Выберите файл
                   </span>{" "}
-                  или перенесите его
+                  или перенесите сюда
                 </div>
               )}
             </div>

@@ -13,6 +13,15 @@ const Upload = ({
   uploadImage,
   setColor,
 }: UploadProps) => {
+  const [index, setIndex] = React.useState<number>(0);
+
+  const context = ["public/1.png", "public/2.png", "public/3.jpg"];
+
+  const choseImage = () => {
+    setIndex(index === context.length - 1 ? 0 : index + 1);
+    setUploadImage(context[index]);
+  };
+
   const inputRef = React.useRef<HTMLDivElement>();
 
   const handleChangeInput = (image: Blob | MediaSource) => {
@@ -27,20 +36,20 @@ const Upload = ({
 
   return (
     <div className="mb-4 flex">
-      <button
+      {/* <button
         onClick={() => inputRef.current && inputRef.current.click()}
         className="bg-gradient-to-r from-[#0353a4] to-[#023e7d] rounded-xl
       py-3 px-7 font-bold"
       >
-        Загрузить фото
-      </button>
+        Загрузить картинку
+      </button> */}
 
       <button
-        onClick={() => inputRef.current && inputRef.current.click()}
-        className="bg-gradient-to-r  rounded-xl
+        onClick={choseImage}
+        className="bg-gradient-to-r from-[#0353a4] to-[#023e7d] rounded-xl
       py-3 px-7 font-bold"
       >
-        Загрузить примерную картинку
+        Картинка для примера
       </button>
 
       {uploadImage?.length > 1 && (
