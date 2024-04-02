@@ -30,7 +30,7 @@ const UploadImage = ({
 
   return (
     <div
-      className={`upload-image  w-[700px] h-[400px] rounded-2xl flex justify-center items-center overflow-hidden border-dashed border-2 border-[#3b3b3f] 
+      className={`upload-image rounded-xl flex justify-center items-center overflow-hidden border-dashed  border-2 border-[#3b3b3f] 
       cursor-pointer hover:border-[#fff] transition ease-in-out ${
         uploadImage?.length > 0 ? "border-none" : ""
       }`}
@@ -44,7 +44,7 @@ const UploadImage = ({
           />
         </>
       ) : (
-        <div className=" h-full w-full flex flex-col justify-center items-center">
+        <div className=" h-full w-full flex flex-col justify-center items-center py-5">
           <div className="upload-img">
             <svg
               width="80px"
@@ -65,13 +65,13 @@ const UploadImage = ({
             <div {...getRootProps()}>
               <input {...getInputProps()} />
               {isDragActive ? (
-                <span className="text-[20px]">перенесите сюда ...</span>
+                <span className="text-[18px]">перенесите сюда ...</span>
               ) : (
-                <div className="text-[18px] text-upload_color">
+                <div className="text-[18px] text-upload_color text-center">
                   <span className="text-[20px] text-white_color hover:border-dotted">
                     Выберите файл
                   </span>{" "}
-                  или перенесите сюда
+                  <span className="hidden">или перенесите сюда</span>
                 </div>
               )}
             </div>

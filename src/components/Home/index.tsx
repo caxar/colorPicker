@@ -8,8 +8,9 @@ import ColorThief from "colorthief";
 
 const Home = () => {
   const [color, setColor] = React.useState<string>("#fff");
-  const [palletteColor, setPalletteColor] = React.useState<any[]>([]);
+  const [palletteColor, setPalletteColor] = React.useState([]);
   const [uploadImage, setUploadImage] = React.useState<HTMLImageElement>();
+  const [dominateColor, setDominateColor] = React.useState();
 
   const { open, close, isSupported } = useEyeDropper();
 
@@ -35,29 +36,31 @@ const Home = () => {
     image.src = uploadImage;
 
     image?.addEventListener("load", () => {
-      const colors = colorThief?.getPalette(image, 8);
-      setPalletteColor(colors);
+      const palletteColorsFromImg = colorThief?.getPalette(image, 8);
+      const dominateColorsFromImg = colorThief?.getColor(image);
+      setPalletteColor(palletteColorsFromImg);
+      setDominateColor(dominateColorsFromImg);
     });
   }, [uploadImage]);
 
   return (
-    <div className="flex flex-col justify-center items-center h-[100vh]">
-      <div className="home py-10">
+    <div className="flex justify-center items-center">
+      <div className="home py-10 w-full">
         <Upload
           setUploadImage={setUploadImage}
           uploadImage={uploadImage}
           setPalletteColor={setPalletteColor}
           setColor={setColor}
         />
-        <div className="home-wrapper flex justify-between gap-10 items-center mb-5">
-          <div className="home-werapper__img">
+        <div className="home-wrapper flex flex-col justify-between gap-10 items-center mb-5">
+          <div className="home-werapper__img w-full">
             <UploadImage
               uploadImage={uploadImage}
               setUploadImage={setUploadImage}
               setPalletteColor={undefined}
             />
           </div>
-          <div className="home-werapper__info">
+          <div className="home-wrapper__info w-full">
             <UploadInfo
               color={color}
               openPicker={openPicker}
@@ -67,7 +70,10 @@ const Home = () => {
           </div>
         </div>
         {palletteColor?.length > 0 ? (
-          <ColorPallette palletteColor={palletteColor} />
+          <ColorPallette
+            palletteColor={palletteColor}
+            dominateColor={dominateColor}
+          />
         ) : (
           ""
         )}

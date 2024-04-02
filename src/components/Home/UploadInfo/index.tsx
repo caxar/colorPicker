@@ -49,7 +49,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({
   const colorName = closest(color);
 
   return (
-    <div className="color flex flex-col justify-between h-full gap-5">
+    <div className="color flex flex-col justify-between gap-5 w-full">
       <div
         onClick={() => openPicker()}
         className={`group color-picker font-bold text-[25px] flex items-center gap-5 cursor-pointer ${
@@ -77,16 +77,16 @@ export const UploadInfo: React.FC<PropsInfo> = ({
           </svg>
         </div>
       </div>
-      <div className="color-picker__wrapper flex gap-5 w-full">
+      <div className="color-picker__wrapper w-full">
         <div
           style={{ background: color }}
           className={`picker-wrapper__color w-[50px] rounded-full`}
         ></div>
         <div className="picker-wrapper__info flex flex-col gap-3">
           {/* 1 */}
-          <div className="wrapper-info__item">
+          <div className="wrapper-info__item  w-full">
             <div className="text-[17px] mb-2">Hex значения</div>
-            <div className="info-item__value w-[280px] gap-3 flex justify-between items-center text-black_color bg-white_color rounded-xl py-1 px-5">
+            <div className="info-item__value gap-3 flex justify-between items-center text-black_color bg-white_color rounded-xl py-2 px-5">
               <span className="text-[17px] font-bold">{color}</span>
               <button onClick={handleCopyColor}>
                 <svg
@@ -124,7 +124,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({
           {/* 2 */}
           <div className="wrapper-info__item">
             <div className="text-[17px] mb-2">RGB значения</div>
-            <div className="info-item__value w-[280px] gap-3 flex justify-between items-center text-black_color bg-white_color rounded-xl py-1 px-5">
+            <div className="info-item__value  gap-3 flex justify-between items-center text-black_color bg-white_color rounded-xl py-2 px-5">
               <span className="text-[17px] font-bold">{hexToRGB(color)}</span>
               <button onClick={handleCopyColorRGB}>
                 <svg
@@ -162,7 +162,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({
           {/* 3 */}
           <div className="wrapper-info__item">
             <div className="text-[17px] mb-2">HSL значения</div>
-            <div className="info-item__value w-[280px] gap-3 flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
+            <div className="info-item__value  gap-3 flex justify-between items-center text-black_color bg-white_color rounded-xl py-2 px-5">
               <span className="text-[17px] font-bold">{hexToHSL(color)}</span>
               <button onClick={handleCopyColorHSL}>
                 <svg
@@ -200,7 +200,7 @@ export const UploadInfo: React.FC<PropsInfo> = ({
           {/* 4 */}
           <div className="wrapper-info__item">
             <div className="text-[17px] mb-2">Название цвета:</div>
-            <div className="info-item__value w-[280px] gap-3 flex justify-between items-center text-black_color bg-white_color rounded-full py-1 px-5">
+            <div className="info-item__value  gap-3 flex justify-between items-center text-black_color bg-white_color rounded-xl py-2 px-5">
               <span className="text-[17px] font-bold">{colorName?.name}</span>
             </div>
           </div>

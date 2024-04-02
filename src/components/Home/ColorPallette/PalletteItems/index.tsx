@@ -39,11 +39,11 @@ const PalletteItems = ({ data }: any) => {
 
   return (
     <>
-      <div className="group color-pallette__item relative flex flex-col w-[120px] ">
+      <div className="group color-pallette__item relative flex">
         <div
           onClick={copyColor}
           style={{ background: hexColor }}
-          className="color h-[70px] rounded-xl flex items-center justify-center gap-3 cursor-pointer
+          className="color h-[70px] rounded-xl flex items-center  w-full justify-center gap-3 cursor-pointer
         "
         >
           <span className={`font-bold ${lightOrDark ? "text-black" : ""}`}>

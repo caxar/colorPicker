@@ -35,7 +35,7 @@ const Upload = ({
   };
 
   return (
-    <div className="mb-4 flex">
+    <div className="mb-4 flex flex-col gap-5">
       {/* <button
         onClick={() => inputRef.current && inputRef.current.click()}
         className="bg-gradient-to-r from-[#0353a4] to-[#023e7d] rounded-xl
@@ -55,8 +55,8 @@ const Upload = ({
       {uploadImage?.length > 1 && (
         <button
           onClick={handleDelete}
-          className="bg-gradient-to-r bg-red-600 rounded-xl
-          py-3 px-7 font-bold ml-5"
+          className=" bg-red-600 rounded-xl
+          py-3 px-7 font-bold "
         >
           Удалить фото
         </button>
